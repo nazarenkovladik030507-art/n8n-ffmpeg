@@ -1,5 +1,4 @@
-FROM node:18-alpine
+FROM n8nio/n8n:1.68.0
+USER root
 RUN apk add --no-cache ffmpeg
-RUN npm install -g n8n
-EXPOSE 5678
-CMD ["n8n", "start"]
+USER node
