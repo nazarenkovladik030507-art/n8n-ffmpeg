@@ -3,8 +3,5 @@ USER root
 RUN apt-get update && apt-get install -y ffmpeg && rm -rf /var/lib/apt/lists/*
 RUN npm install --save axios
 COPY custom-helpers.js /home/node/.n8n/custom-helpers.js
-COPY entrypoint.sh /entrypoint.sh
-RUN chmod +x /entrypoint.sh
 USER node
-ENTRYPOINT ["/entrypoint.sh"]
-CMD ["node", "/usr/local/lib/node_modules/n8n/bin/n8n.js"]
+ENV NODE_OPTIONS="--require /home/node/.n8n/custom-helpers.js"
