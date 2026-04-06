@@ -1,21 +1,15 @@
 const axios = require('axios');
 
-if (!global.$helpers) {
-  global.$helpers = {};
-}
-
-global.$helpers.httpRequest = async (options) => {
-  try {
+global.$helpers = {
+  httpRequest: async (options) => {
     const response = await axios({
       method: options.method || 'GET',
       url: options.url,
       data: options.body,
-      headers: options.headers || { 'Content-Type': 'application/json' }
+      headers: options.headers || {}
     });
     return response.data;
-  } catch (error) {
-    throw error;
   }
 };
 
-console.log('✅ Custom $helpers loaded');
+module.exports = global.$helpers;
