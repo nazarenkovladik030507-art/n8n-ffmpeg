@@ -7,3 +7,4 @@ COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 USER node
 ENTRYPOINT ["/entrypoint.sh"]
+CMD ["node", "/usr/local/lib/node_modules/n8n/bin/n8n.js"]
