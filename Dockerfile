@@ -3,9 +3,9 @@ FROM n8nio/n8n:2.14.2
 USER root
 
 # Встановити ffmpeg
-RUN apk add --no-cache ffmpeg
+RUN apt-get update && apt-get install -y ffmpeg && rm -rf /var/lib/apt/lists/*
 
-# Встановити axios для custom helpers
+# Встановити axios
 RUN npm install --save axios
 
 # Копіювати custom helpers
